@@ -1,0 +1,441 @@
+<title>Ardyn Interiors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+  /* Ardyn Interiors — editorial, warm, moody-luxe. Deep teal-navy + warm greige +
+     gold on cream. Cormorant Garamond (display) + Jost (ui/body). Single committed
+     light-with-dark-features theme. Layout: full-bleed imagery + generous whitespace. */
+  :root{
+    --cream:#f1ede6;        /* warm light ground */
+    --paper:#faf8f4;        /* lifted light surface */
+    --ink:#1c2a32;          /* deep teal-navy: text + dark sections */
+    --ink-soft:#4a565c;     /* secondary text on light */
+    --greige:#9d9486;       /* warm taupe */
+    --faint:#a79f92;        /* captions / meta */
+    --line:#e1dace;         /* hairline on cream */
+    --line-dk:rgba(241,237,230,.16); /* hairline on ink */
+    --gold:#dab473;         /* accent: rules, fills */
+    --gold-deep:#a9823f;    /* accent for small text (AA on cream) */
+    color-scheme:light;
+
+    --f-serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+    --f-sans:"Jost","Helvetica Neue",Arial,sans-serif;
+
+    --s--1:clamp(.82rem,.79rem + .15vw,.9rem);
+    --s-0:clamp(1rem,.97rem + .2vw,1.1rem);
+    --s-1:clamp(1.15rem,1.05rem + .4vw,1.4rem);
+    --s-2:clamp(1.5rem,1.3rem + .9vw,2.1rem);
+    --s-3:clamp(2.1rem,1.6rem + 2.2vw,3.5rem);
+    --s-4:clamp(2.8rem,2rem + 4vw,5.6rem);
+
+    --maxw:1220px;
+    --gutter:clamp(18px,5vw,64px);
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--cream);color:var(--ink);font-family:var(--f-sans);
+    font-weight:400;font-size:var(--s-0);line-height:1.7;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{margin:0;font-weight:400;line-height:1.08;text-wrap:balance}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+  .pad{padding-block:clamp(4rem,9vw,7rem)}
+  .ink-sec{background:var(--ink);color:var(--cream)}
+  main>section+section{border-top:1px solid var(--line)}
+  .ink-sec+section,section+.ink-sec,.ink-sec{border-top:none}
+
+  .eyebrow{font-family:var(--f-sans);font-weight:500;font-size:.7rem;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--gold-deep);display:inline-flex;align-items:center;gap:.8em}
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
+  .ink-sec .eyebrow,.on-img .eyebrow{color:var(--gold)}
+  .ink-sec .eyebrow::before{background:var(--gold)}
+
+  .serif{font-family:var(--f-serif)}
+
+  .btn{font-family:var(--f-sans);font-weight:500;font-size:.74rem;letter-spacing:.22em;
+    text-transform:uppercase;display:inline-flex;align-items:center;gap:.7em;
+    padding:1.05em 1.9em;border:1px solid var(--ink);cursor:pointer;
+    transition:background .25s,color .25s,border-color .25s,transform .1s}
+  .btn:active{transform:translateY(1px)}
+  .btn-solid{background:var(--ink);color:var(--cream)}
+  .btn-solid:hover{background:#2a3b44}
+  .btn-ghost{background:transparent;border-color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--cream)}
+  .btn-gold{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+  .btn-gold:hover{background:#e6c488;border-color:#e6c488}
+  .btn-light{border-color:rgba(241,237,230,.5);color:var(--cream)}
+  .btn-light:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+
+  /* ---------- header ---------- */
+  header.nav{position:absolute;top:0;left:0;right:0;z-index:60;
+    transition:background .35s,box-shadow .35s,color .35s}
+  header.nav.solid{position:fixed;background:rgba(28,42,50,.95);backdrop-filter:blur(10px);
+    box-shadow:0 10px 40px -28px #000}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1.2rem;padding-block:1.3rem}
+  .mark{display:flex;flex-direction:column;line-height:1;color:var(--cream)}
+  .mark b{font-family:var(--f-serif);font-weight:500;font-size:1.55rem;letter-spacing:.22em}
+  .mark span{font-family:var(--f-sans);font-weight:400;font-size:.52rem;letter-spacing:.52em;
+    text-transform:uppercase;color:var(--gold);margin-top:.25rem;padding-left:.12em}
+  .nav-links{display:flex;align-items:center;gap:2rem;font-family:var(--f-sans);font-weight:400;
+    font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream)}
+  .nav-links a{opacity:.82;transition:opacity .2s}
+  .nav-links a:hover{opacity:1;color:var(--gold)}
+  .nav-right{display:flex;align-items:center;gap:1.4rem}
+  .menu-btn{display:none;background:transparent;border:1px solid rgba(241,237,230,.4);color:var(--cream);
+    width:44px;height:40px;align-items:center;justify-content:center;cursor:pointer}
+  .menu-btn svg{width:18px;height:18px}
+  #mobile{display:none;position:fixed;top:0;left:0;right:0;z-index:59;background:var(--ink);
+    padding-top:4.8rem;border-bottom:1px solid var(--line-dk)}
+  #mobile .wrap{display:flex;flex-direction:column;padding-bottom:1.2rem}
+  #mobile a{font-family:var(--f-sans);font-weight:400;font-size:.9rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--cream);padding:.85rem 0;border-bottom:1px solid var(--line-dk)}
+  #mobile a:last-child{border-bottom:none;color:var(--gold)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:clamp(560px,82vh,780px);display:flex;align-items:flex-end;
+    overflow:hidden;background:var(--ink)}
+  .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero-wash{position:absolute;inset:0;background:
+    linear-gradient(to top,rgba(20,30,36,.72),rgba(20,30,36,.15) 45%,rgba(20,30,36,.28))}
+  .hero .wrap{position:relative;width:100%;padding-top:clamp(7rem,14vh,9rem);
+    padding-bottom:clamp(3rem,7vw,5rem);color:var(--cream)}
+  .hero .inner{max-width:24ch}
+  .hero h1{font-family:var(--f-serif);font-weight:400;font-size:clamp(2.6rem,1.9rem + 2.8vw,4.2rem);
+    letter-spacing:.005em;margin-top:1.3rem}
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero p{margin-top:1.4rem;max-width:44ch;color:rgba(241,237,230,.88);font-size:var(--s-1);font-weight:300}
+  .hero-actions{margin-top:2.2rem;display:flex;flex-wrap:wrap;gap:.9rem}
+
+  /* ---------- intro ---------- */
+  .intro{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+  .intro h2{font-family:var(--f-serif);font-size:var(--s-3);font-weight:400;letter-spacing:.005em}
+  .intro h2 em{font-style:italic;color:var(--gold-deep)}
+  .intro p{margin-top:1.3rem;color:var(--ink-soft);max-width:54ch;font-weight:300;font-size:var(--s-1)}
+  .at-glance{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .ag{background:var(--paper);padding:1.5rem 1.4rem}
+  .ag .n{font-family:var(--f-serif);font-size:1.6rem;font-weight:500;line-height:1.1}
+  .ag .l{margin-top:.35rem;font-size:.78rem;color:var(--ink-soft);font-weight:400}
+
+  /* ---------- section heads ---------- */
+  .sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+    gap:1.4rem;margin-bottom:3rem}
+  .sec-head h2{font-family:var(--f-serif);font-size:var(--s-3);font-weight:400;max-width:20ch;margin-top:1rem}
+  .sec-head h2 em{font-style:italic;color:var(--gold-deep)}
+  .ink-sec .sec-head h2 em{color:var(--gold)}
+  .sec-head .lead{color:var(--ink-soft);max-width:40ch;font-weight:300}
+  .ink-sec .sec-head .lead{color:rgba(241,237,230,.75)}
+
+  /* ---------- services ---------- */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-dk);border:1px solid var(--line-dk)}
+  .svc{background:var(--ink);padding:2.2rem 1.9rem;display:flex;flex-direction:column;gap:.8rem;transition:background .3s}
+  .svc:hover{background:#22333c}
+  .svc .num{font-family:var(--f-sans);font-weight:500;font-size:.72rem;letter-spacing:.2em;color:var(--gold)}
+  .svc h3{font-family:var(--f-serif);font-size:var(--s-2);font-weight:400}
+  .svc p{color:rgba(241,237,230,.72);font-size:var(--s--1);font-weight:300;line-height:1.7}
+
+  /* ---------- portfolio ---------- */
+  .work{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(14px,1.8vw,26px)}
+  .proj{display:flex;flex-direction:column}
+  .proj .frame{position:relative;overflow:hidden;background:var(--line)}
+  .proj .frame img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .proj:hover .frame img{transform:scale(1.04)}
+  .proj .cap{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding-top:1rem}
+  .proj .cap h3{font-family:var(--f-serif);font-size:var(--s-1);font-weight:500}
+  .proj .cap .meta{font-family:var(--f-sans);font-weight:400;font-size:.64rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--faint);text-align:right;white-space:nowrap}
+  .c4{grid-column:span 4}.c3{grid-column:span 3}.c2{grid-column:span 2}
+  .ar-wide{aspect-ratio:3/2}.ar-tall{aspect-ratio:4/5}.ar-port{aspect-ratio:3/4}
+
+  /* ---------- approach ---------- */
+  .approach{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .step{padding:0 1.8rem;border-left:1px solid var(--line-dk)}
+  .step:first-child{border-left:none;padding-left:0}
+  .step .num{font-family:var(--f-serif);font-size:1.8rem;color:var(--gold);margin-bottom:.8rem;font-weight:500}
+  .step h3{font-family:var(--f-serif);font-size:var(--s-1);font-weight:500;margin-bottom:.5rem}
+  .step p{color:rgba(241,237,230,.72);font-size:var(--s--1);font-weight:300;line-height:1.7}
+
+  /* ---------- about ---------- */
+  .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+  .split .frame{position:relative;overflow:hidden;aspect-ratio:4/5}
+  .split .frame img{width:100%;height:100%;object-fit:cover}
+  .about-body{color:var(--ink-soft);font-weight:300;font-size:var(--s-1);margin-top:1.2rem;max-width:50ch}
+  .about-body p+p{margin-top:1rem}
+  .sig{font-family:var(--f-serif);font-style:italic;font-size:var(--s-2);color:var(--gold-deep);margin-top:1.4rem}
+
+  /* ---------- CTA band ---------- */
+  .band{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
+    min-height:clamp(420px,52vw,580px);text-align:center;color:var(--cream)}
+  .band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .band::after{content:"";position:absolute;inset:0;background:rgba(20,30,36,.62)}
+  .band .inner{position:relative;max-width:620px;padding:1.5rem}
+  .band h2{font-family:var(--f-serif);font-size:var(--s-3);font-weight:400}
+  .band h2 em{font-style:italic;color:var(--gold)}
+  .band p{margin-top:1rem;color:rgba(241,237,230,.85);font-weight:300}
+  .band .btn{margin-top:1.8rem}
+
+  /* ---------- contact ---------- */
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem)}
+  form{display:flex;flex-direction:column;gap:1.1rem;margin-top:1.7rem}
+  .field{display:flex;flex-direction:column;gap:.45rem}
+  label{font-family:var(--f-sans);font-weight:500;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+  input,select,textarea{font-family:var(--f-sans);font-size:1rem;color:var(--ink);background:var(--paper);
+    border:1px solid var(--line);padding:.85rem 1rem;width:100%}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+  textarea{resize:vertical;min-height:120px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+  .form-note{font-family:var(--f-sans);font-size:.66rem;color:var(--faint)}
+  #sent{display:none;background:var(--paper);border:1px solid var(--gold);padding:1.1rem;font-size:.85rem}
+  .cinfo{display:flex;flex-direction:column;gap:1.8rem}
+  .cinfo .l{font-family:var(--f-sans);font-weight:500;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:.4rem}
+  .cinfo .v{font-family:var(--f-serif);font-size:var(--s-2);font-weight:400}
+  .cinfo .v.small{font-size:1.05rem;color:var(--ink-soft);font-family:var(--f-sans);font-weight:300}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:rgba(241,237,230,.75)}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2.2rem;padding-block:3.4rem 2.4rem}
+  .foot .mark{color:var(--cream)}
+  .foot-blurb{max-width:28ch;margin-top:1.1rem;font-weight:300;font-size:var(--s--1);color:rgba(241,237,230,.6)}
+  .foot-col{display:flex;flex-direction:column;gap:.7rem;font-family:var(--f-sans);font-size:.82rem;font-weight:300}
+  .foot-col .h{font-weight:500;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
+  .foot-col a{opacity:.8}.foot-col a:hover{opacity:1;color:var(--gold)}
+  .legal{border-top:1px solid var(--line-dk);padding-block:1.5rem;display:flex;flex-wrap:wrap;
+    justify-content:space-between;gap:.6rem;font-family:var(--f-sans);font-size:.66rem;letter-spacing:.08em;color:rgba(241,237,230,.5)}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:920px){
+    .nav-links{display:none}.menu-btn{display:flex}
+    .intro{grid-template-columns:1fr}
+    .services{grid-template-columns:repeat(2,1fr)}
+    .approach{grid-template-columns:repeat(2,1fr);gap:2.4rem 0}
+    .step{padding-left:1.8rem}.step:first-child{padding-left:1.8rem}
+    .step:nth-child(odd){border-left:none;padding-left:0}
+    .split{grid-template-columns:1fr}.split .frame{aspect-ratio:16/10}
+    .contact{grid-template-columns:1fr}
+    .c4,.c3{grid-column:span 6}.c2{grid-column:span 3}
+  }
+  @media(max-width:560px){
+    .services{grid-template-columns:1fr}
+    .at-glance{grid-template-columns:1fr}
+    .approach{grid-template-columns:1fr}.step,.step:nth-child(odd){border-left:none;padding-left:0}
+    .work{grid-template-columns:repeat(2,1fr)}
+    .c4,.c3,.c2{grid-column:span 2}
+    .two{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+  @media(prefers-reduced-motion:reduce){.proj .frame img{transition:none}}
+</style>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="mark" href="#top" aria-label="Ardyn Interiors home"><b>ARDYN</b><span>Interiors</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work">Portfolio</a><a href="#services">Services</a><a href="#approach">Approach</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#contact" class="btn btn-gold">Inquire</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile">
+    <div class="wrap">
+      <a href="#work">Portfolio</a><a href="#services">Services</a><a href="#approach">Approach</a>
+      <a href="#about">About</a><a href="#contact">Contact</a><a href="#contact">Inquire &rarr;</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero on-img">
+    <video class="hero-img" autoplay muted loop playsinline preload="auto" poster="assets/video/hero-poster.jpg">
+      <source src="assets/video/hero-loop.mp4" type="video/mp4">
+    </video>
+    <div class="hero-wash"></div>
+    <div class="wrap">
+      <div class="inner">
+        <span class="eyebrow">Interior Design Studio</span>
+        <h1>Spaces that feel <em>refined, yet deeply lived in.</em></h1>
+        <p>A design studio rooted in organic materials, thoughtful functionality, and timeless living.</p>
+        <div class="hero-actions">
+          <a href="#work" class="btn btn-gold">View portfolio</a>
+          <a href="#contact" class="btn btn-light">Begin a project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="pad">
+    <div class="wrap intro">
+      <div>
+        <span class="eyebrow">The studio</span>
+        <h2 style="margin-top:1rem">Elevated <em>yet livable</em> &mdash; balancing warmth, texture, and intention.</h2>
+        <p>Ardyn Interiors curates each space to feel both refined and personal. We layer natural materials and considered details to create environments that are calm, grounded, and made to be lived in &mdash; not just looked at.</p>
+      </div>
+      <div class="at-glance">
+        <div class="ag"><div class="n serif">Full&#8209;service</div><div class="l">Design, sourcing &amp; installation</div></div>
+        <div class="ag"><div class="n serif">Organic</div><div class="l">Natural, timeless materials</div></div>
+        <div class="ag"><div class="n serif">Considered</div><div class="l">Every detail, intentional</div></div>
+        <div class="ag"><div class="n serif">By appointment</div><div class="l">[Service area]</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="pad ink-sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">What we offer</span><h2>Services, <em>from concept to install.</em></h2></div>
+        <p class="lead">Whether a single room or a whole home, we guide the process from first idea to the final styled reveal.</p>
+      </div>
+      <div class="services">
+        <article class="svc"><span class="num">01</span><h3>Full&#8209;Service Interior Design</h3><p>End&#8209;to&#8209;end design &mdash; concept, layouts, materials, and styling, managed as one considered whole.</p></article>
+        <article class="svc"><span class="num">02</span><h3>Renovations &amp; Remodels</h3><p>Thoughtful updates to kitchens, baths, and whole homes, detailed down to the finish.</p></article>
+        <article class="svc"><span class="num">03</span><h3>Furnishing &amp; Styling</h3><p>Curated furniture, textiles, and objects &mdash; sourced and placed with intention.</p></article>
+        <article class="svc"><span class="num">04</span><h3>Space Planning</h3><p>Layouts that balance beauty with how you actually move through and live in a home.</p></article>
+        <article class="svc"><span class="num">05</span><h3>Procurement &amp; Management</h3><p>We source, order, and oversee installation so the process stays calm and on track.</p></article>
+        <article class="svc"><span class="num">06</span><h3>Design Consultation</h3><p>Focused guidance and a clear direction for a single space or a fresh start.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="work" class="pad">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Selected work</span><h2>A portfolio of <em>warm, layered spaces.</em></h2></div>
+        <p class="lead">A look at recent interiors &mdash; curated for warmth, texture, and timeless ease.</p>
+      </div>
+      <div class="work">
+        <article class="proj c4"><div class="frame ar-wide"><img src="assets/work1.jpg" alt="Kitchen with wood island, white counters, and bar seating" loading="lazy"></div>
+          <div class="cap"><h3>Kitchen &amp; island</h3><span class="meta">Kitchen</span></div></article>
+        <article class="proj c2"><div class="frame ar-port"><img src="assets/work2.jpg" alt="Primary bath with freestanding tub and warm vanity" loading="lazy"></div>
+          <div class="cap"><h3>The primary bath</h3><span class="meta">Bath</span></div></article>
+        <article class="proj c2"><div class="frame ar-port"><img src="assets/work3.jpg" alt="Shower with layered natural-stone and wood-look tile" loading="lazy"></div>
+          <div class="cap"><h3>Layered textures</h3><span class="meta">Materials</span></div></article>
+        <article class="proj c4"><div class="frame ar-wide"><img src="assets/work4.jpg" alt="Primary bedroom with upholstered bed and soft palette" loading="lazy"></div>
+          <div class="cap"><h3>Rest &amp; retreat</h3><span class="meta">Primary suite</span></div></article>
+        <article class="proj c4"><div class="frame ar-wide"><img src="assets/work5.jpg" alt="Living room with layered seating opening to the outdoors" loading="lazy"></div>
+          <div class="cap"><h3>Living &amp; gathering</h3><span class="meta">Living room</span></div></article>
+        <article class="proj c2"><div class="frame ar-tall"><img src="assets/work6.jpg" alt="Styled shelving vignette with art and objects" loading="lazy"></div>
+          <div class="cap"><h3>Styled moments</h3><span class="meta">Styling</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section id="approach" class="pad ink-sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">How we work</span><h2>A calm, <em>considered process.</em></h2></div>
+        <p class="lead">Clear steps and steady communication, so the work feels as good as the result.</p>
+      </div>
+      <div class="approach">
+        <div class="step"><div class="num serif">I</div><h3>Consultation</h3><p>We begin by listening &mdash; how you live, what you love, and how a space should feel.</p></div>
+        <div class="step"><div class="num serif">II</div><h3>Concept &amp; Design</h3><p>Layouts, palettes, and materials layered into a cohesive, detailed plan.</p></div>
+        <div class="step"><div class="num serif">III</div><h3>Sourcing &amp; Procurement</h3><p>We curate and manage every piece, from statement furniture to the final finish.</p></div>
+        <div class="step"><div class="num serif">IV</div><h3>Install &amp; Styling</h3><p>We handle delivery, installation, and the final styling for the reveal.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="pad">
+    <div class="wrap split">
+      <div class="frame"><img src="assets/about.jpg" alt="An Ardyn Interiors space" loading="lazy"></div>
+      <div>
+        <span class="eyebrow">About Ardyn</span>
+        <h2 class="serif" style="font-size:var(--s-3);font-weight:400;margin-top:1rem">Design that feels <em>intentional, warm, and timeless.</em></h2>
+        <div class="about-body">
+          <p>&ldquo;We approach each space with intention &mdash; layering natural textures and thoughtful details to create an environment that feels both refined and deeply lived in.&rdquo;</p>
+          <p>[A sentence or two in the studio&rsquo;s own voice &mdash; who founded Ardyn, the design philosophy, and what sets the studio apart.]</p>
+        </div>
+        <div class="sig">Ardyn Interiors</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="band">
+    <img src="assets/cta.jpg" alt="A finished Ardyn Interiors room">
+    <div class="inner">
+      <span class="eyebrow">Let&rsquo;s begin</span>
+      <h2 style="margin-top:.8rem">Ready to create a space that <em>feels like you?</em></h2>
+      <p>Tell us about your home and what you&rsquo;re hoping for. We&rsquo;ll take it from there.</p>
+      <a href="#contact" class="btn btn-gold">Start your project</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="pad">
+    <div class="wrap contact">
+      <div>
+        <span class="eyebrow">Inquire</span>
+        <h2 class="serif" style="font-size:var(--s-2);font-weight:400;margin-top:1rem">Tell us about your project.</h2>
+        <p style="color:var(--ink-soft);font-weight:300;margin-top:.7rem;max-width:42ch">A few details help us understand your space and how we can help.</p>
+        <form id="form" novalidate>
+          <div class="two">
+            <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" autocomplete="tel" inputmode="tel"></div>
+          </div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="type">Project type</label>
+            <select id="type" name="type"><option>Full&#8209;service interior design</option><option>Renovation / remodel</option><option>Furnishing &amp; styling</option><option>Single room</option><option>Design consultation</option><option>Not sure yet</option></select>
+          </div>
+          <div class="field"><label for="msg">About the project</label><textarea id="msg" name="msg" placeholder="Tell us about your space, your style, and your timeline."></textarea></div>
+          <button type="submit" class="btn btn-solid">Send inquiry</button>
+          <p class="form-note">On the live site this inquiry emails the studio. Nothing is sent from this preview.</p>
+          <div id="sent" role="status">Thank you &mdash; on the live site this would reach the studio, and you&rsquo;d hear back within a few business days.</div>
+        </form>
+      </div>
+      <div class="cinfo">
+        <div><div class="l">Studio</div><div class="v small">By appointment</div></div>
+        <div><div class="l">Serving</div><div class="v small">[Service area &mdash; cities to confirm]</div></div>
+        <div><div class="l">Email &amp; phone</div><div class="v small">To be added &mdash; share your preferred contact and it will appear here.</div></div>
+        <div><div class="l">Follow</div><div class="v small">[Instagram handle to confirm]</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div style="max-width:26ch">
+      <a class="mark" href="#top"><b>ARDYN</b><span>Interiors</span></a>
+      <p class="foot-blurb">A design studio rooted in organic materials, thoughtful functionality, and timeless living.</p>
+    </div>
+    <div class="foot-col"><span class="h">Explore</span><a href="#work">Portfolio</a><a href="#services">Services</a><a href="#approach">Approach</a><a href="#about">About</a></div>
+    <div class="foot-col"><span class="h">Connect</span><a href="#contact">Inquire</a><a href="#contact">[Email]</a><a href="#contact">[Instagram]</a></div>
+    <div class="foot-col"><span class="h">Studio</span><span>By appointment</span><span>[Service area]</span></div>
+  </div>
+  <div class="wrap legal">
+    <span>&copy; <span id="yr"></span> Ardyn Interiors. All rights reserved.</span>
+    <span>Interior Design Studio</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var nav=document.getElementById('nav'),m=document.getElementById('mobile'),btn=document.getElementById('menuBtn');
+    var onScroll=function(){nav.classList.toggle('solid',window.scrollY>40)};
+    onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+    btn.addEventListener('click',function(){
+      var open=m.style.display==='block';m.style.display=open?'none':'block';
+      btn.setAttribute('aria-expanded',String(!open));
+    });
+    m.addEventListener('click',function(e){if(e.target.tagName==='A')m.style.display='none';});
+    var form=document.getElementById('form'),sent=document.getElementById('sent');
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){form.reportValidity();return;}
+      sent.style.display='block';form.querySelector('button[type=submit]').disabled=true;
+      sent.scrollIntoView({block:'nearest'});
+    });
+    var y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear();
+  })();
+</script>
