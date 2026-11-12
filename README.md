@@ -8,6 +8,8 @@ assets, no build step. Hosted free on **GitHub Pages**.
 - `index.html` — the whole site.
 - `assets/` — curated project photos + designer portrait.
 - `assets/video/` — muted looping hero video (from the portfolio film) + poster.
+- `assets/lake-havasu/` — The Black Rock Residence featured project (6 photos, paired so each row matches orientation).
+- `assets/outdoors/` — Outdoor Spaces landscaping photos (6, processed from RAW).
 - `.nojekyll` — serve files as-is on GitHub Pages.
 
 ## Brand
